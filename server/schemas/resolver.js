@@ -1,7 +1,7 @@
-const resolvers = {
-    Query: {
+// const resolvers = {
+//     Query: {
       
-    }
-  };
+//     }
+//   };
   
-  module.exports = resolvers;
+//   module.exports = resolvers;
