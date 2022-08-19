@@ -48,3 +48,40 @@ button {
   color: white;
   text-decoration: underline;
 }
+
+.mx-2 {
+  margin-right: var(--spacing-two);
+  margin-left: var(--spacing-two);
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.px-1 {
+  padding-right: var(--spacing-one);
+  padding-left: var(--spacing-one);
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  display: flex;
+  min-height: 100vh;
+  justify-content: left;
+  padding: 14px 16px;
+}
+
+
+.home{
+  display: flex;
+  min-height: 100vh;
+  background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
+}
+
+.navs{
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}

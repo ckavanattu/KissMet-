@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-// import logo from "./img/logo";
-// import  {Fragment} from 'react';
+import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
+
+
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -12,10 +14,6 @@ export const Login = (props) => {
 
    
     return (
-        // <>
-        // <div className="logo">
-        //     <img alt="logo" src={logo} style={{ height: "50px", width: "100px", paddingBottom:"10px"}}/>
-        // </div>
         <div className="auth-form-container">
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
@@ -23,9 +21,9 @@ export const Login = (props) => {
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit">Log In</button>
+                <Link to="/home"><button>Log In</button></Link>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+            <Link to="/register"><button className="link-btn">Don't have an account? Register here.</button></Link>
         </div>
         // </>
     )
