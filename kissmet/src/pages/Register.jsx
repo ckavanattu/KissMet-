@@ -4,6 +4,7 @@ export const Register = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
+    const [age, setAge] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,8 +17,10 @@ export const Register = (props) => {
         <form className="register-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Full name</label>
             <input value={name} name="name" id="name" placeholder="Full Name" />
+            <label htmlFor="age">Age</label>
+            <input value={age} name="age" id="age" placeholder="Age" />
             <label htmlFor="email">email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)}type="Wmail" placeholder="youremail@gmail.com" id="email" name="email" />
+            <input value={email} onChange={(e) => setEmail(e.target.value)}type="Email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">password</label>
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="Password" placeholder="********" id="password" name="password" />
             <button type="submit"> Sign Me Up! </button>
