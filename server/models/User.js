@@ -11,13 +11,13 @@ const userSchema = new Schema(
     },
     name: {
       type: String,
-      // required: true,
+      required: true,
       unique: false,
       trim: true
     },
-    Age: {
+    age: {
       type: Number,
-      // required: true,
+      required: true,
       unique: false
     },
     email: {
@@ -33,7 +33,7 @@ const userSchema = new Schema(
     },
     description: {
       type: String,
-      // required: true,
+      required: true,
       minLength: 1,
       maxLength: 280
     },
