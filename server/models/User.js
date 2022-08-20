@@ -37,6 +37,12 @@ const userSchema = new Schema(
       minLength: 1,
       maxLength: 280
     },
+    status: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Status'
+      }
+    ],
     friends: [
       {
         type: Schema.Types.ObjectId,

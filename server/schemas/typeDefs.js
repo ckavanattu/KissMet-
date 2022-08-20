@@ -10,11 +10,17 @@ type User {
     username: String
     
     }
+type Status {
+    _id: ID
+    statusUpdate: String
+    createdAt: String
+    username: String
+}
 
-    type Auth {
+type Auth {
         token: ID!
         user: User
-      }
+}
   
     type Query {
         me: User
@@ -25,9 +31,8 @@ type User {
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-        addThought(thoughtText: String!): Thought
-        addReaction(thoughtId: ID!, reactionBody: String!): Thought
+        addUser(username: String!, email: String!, password: String!, description: String!, name: String! age: Int!): Auth
+        addStatus(statusUpdate: String!): Status
         addFriend(friendId: ID!): User
     }
 
