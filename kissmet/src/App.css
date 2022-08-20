@@ -75,14 +75,12 @@ button {
   position: fixed; 
   top: 0;
   display: flex;
-  min-height: 100vh;
   justify-content: left;
   padding: 14px 16px;
 }
 
 
 .gradient{
-  display: flex;
   min-height: 100vh;
   background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
 }
@@ -93,6 +91,60 @@ button {
   justify-content: center;
 }
 
+/* CARD STYLES */
+
+.wrapperCard{
+  /* display:grid; */
+  padding-top: 10rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  
+}
+
+.card{
+  overflow:hidden;
+  border-radius: 10px;
+  border: 2px solid white;
+  width: 50%;
+  color: white;
+  width: 30rem;
+}
+
+.matchButtons{
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  display: flex;
+}
+
+.matchButtons img{
+  width: 20%;
+  margin: 0 4rem;
+}
+
+.cardImg{
+  height: 30rem;
+  width: 100%;
+  object-fit:cover;
+}
+
+.userNameAge{
+  padding:1rem;
+}
+
+.userHobby{
+  padding: 0 1rem;
+  font-style: italic;
+}
+
+.userDesc{
+  padding: 1rem;
+}
+
+.matchButtons{
+  padding:1rem;
+  margin: 1rem;
+}
 
 /* CHAT STYLES */
   .ce-chat-list {

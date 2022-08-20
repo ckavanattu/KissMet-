@@ -24,7 +24,7 @@ function App() {
 
     <>
       <Router>
-      <div className="home"> 
+      <div> 
         <Routes>
           <Route 
             path="/" 
