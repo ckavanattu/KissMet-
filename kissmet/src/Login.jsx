@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Gif from "./img/Gif.gif";
 // import logo from "./img/logo";
 // import  {Fragment} from 'react';
 export const Login = (props) => {
@@ -17,7 +18,7 @@ export const Login = (props) => {
         //     <img alt="logo" src={logo} style={{ height: "50px", width: "100px", paddingBottom:"10px"}}/>
         // </div>
         <div className="auth-form-container">
-            <h2>Login</h2>
+            <h2>Login </h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email">email</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
