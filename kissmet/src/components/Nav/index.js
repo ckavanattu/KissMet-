@@ -1,19 +1,21 @@
 import React from 'react';
 import logo from "../../assets/logo.png";
 import matches from "../../assets/matches.png";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
 
     return (
         <header>
         <nav className="navbar">
-            <a href="/" >
+            <Link to="/">
                 <img src={logo} style={{ width: "15%"}}></img>
-            </a>
+            </Link>
+            
             <section className = "navs">
-                <a href="/" >
+                <Link to="/chat">
                     <img src={matches} style={{ width: "35%"}}></img>
-                </a>
+                </Link>
             </section>
         </nav>
         </header>

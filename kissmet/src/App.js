@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
-
+import {BrowserRouter as Router, Route,Routes} from "react-router-dom";
 
 import './App.css';
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
+import { Chat } from "./components/Chat";
 import { Nav } from "./components/Nav";
 
 function App() {
@@ -42,6 +38,10 @@ function App() {
           <Route 
             path="/register" 
             element={< Register />}  
+          /> 
+          <Route 
+            path="/chat" 
+            element={< Chat />}  
           /> 
             <Route 
               path="*" 

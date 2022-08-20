@@ -7,7 +7,7 @@ export const Home = () => {
     const loggedIn = Auth.loggedIn();
 
     return (
-        <div className="home">
+        <div className="gradient">
             <Nav></Nav>
         </div>
     )
