@@ -72,12 +72,16 @@ button {
   padding-left: var(--spacing-one);
 }
 
+nav{
+  background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
+}
+
 .navbar {
   position: fixed; 
   top: 0;
   display: flex;
   justify-content: left;
-  padding: 14px 16px;
+  padding: 14px 14px;
 }
 
 
@@ -107,20 +111,22 @@ button {
   overflow:hidden;
   border-radius: 10px;
   border: 2px solid white;
-  width: 50%;
   color: white;
-  width: 30rem;
+  width: 25rem;
 }
 
 .matchButtons{
-  cursor: pointer;
-  transition: transform 200ms ease-in;
   display: flex;
 }
 
-.matchButtons img{
-  width: 20%;
-  margin: 0 4rem;
+.userDecline{
+  justify-content: left;
+  width: 13%;
+}
+
+.userMatch{
+  justify-content: right;
+  width: 13%;
 }
 
 .cardImg{
@@ -148,6 +154,13 @@ button {
 }
 
 /* CHAT STYLES */
+
+
+  .ce-chat-engine{
+    margin-top:10%;
+    /* background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D); */
+  }
+
   .ce-chat-list {
   background-color: rgb(240, 240, 240) !important;
   }

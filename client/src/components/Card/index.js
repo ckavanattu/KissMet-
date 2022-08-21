@@ -14,8 +14,8 @@ const Card = (props) => {
                 <p className="userDesc"> {props.desc}</p>
             </div>
             <div className="matchButtons">
-                <img src={decline} ></img>
-                <img src={match} ></img>
+                <img src={decline} className="userDecline"></img>
+                <img src={match} className="userMatch"></img>
             </div>
         </div>
     )
