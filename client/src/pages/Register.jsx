@@ -1,16 +1,65 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 
 export const Register = (props) => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [pass, setPass] = useState('');
+    // const [name, setName] = useState('');
+    // const [age, setAge] = useState('');
+    // const [description, setDescription] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
+    const [formState, setFormState] = useState({
+        name: '',
+        email: '',
+        password: '',
+        age: '',
+        description: ''
+      });
+
+    const [addUser, { error }] = useMutation(ADD_USER);
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(email);
+    // }
+
+    // try {
+    //     const { data } = await addUser({
+    //       variables: { ...formState }
+    //     });
+      
+    //     Auth.login(data.addUser.token);
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+
+    // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
     }
+  };
 
     return (
         <div className = "App">
@@ -18,14 +67,18 @@ export const Register = (props) => {
                 <h2>Register</h2>
             <form className="register-form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Full name</label>
-                <input value={name} name="name" id="name" placeholder="Full Name" />
+                {/* <input value={name} onChange={(e) => setName(e.target.value)}type="Name" name="name" id="name" placeholder="Full Name" /> */}
+                <input value={formState.name} onChange={handleChange} type="Name" name="name" id="name" placeholder="Full Name" />
                 <label htmlFor="age">Age</label>
-                <input value={age} name="age" id="age" placeholder="Age" />
-                <label htmlFor="email">email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)}type="Email" placeholder="youremail@gmail.com" id="email" name="email" />
-                <label htmlFor="password">password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type="Password" placeholder="********" id="password" name="password" />
-                <Link to="/"><button type="submit"> Sign Me Up! </button ></Link>
+                <input value={formState.age} onChange={handleChange} type="Age" name="age" id="age" placeholder="Age" />
+                <label htmlFor="email">Email</label>
+                <input value={formState.email} onChange={handleChange} type="Email" placeholder="youremail@gmail.com" id="email" name="email" />
+                <label htmlFor="password">Password</label>
+                <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
+                <label htmlFor="description">Describe Yourself!</label>
+                <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
+                {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
+                <button type="submit"> Sign Me Up! </button >
             </form>
             <Link to="/login"><button className="link-btn"> Already have an account? Login here.</button ></Link>
             </div>

@@ -7,17 +7,29 @@ import { Register } from "./pages/Register";
 import { Home } from "./pages/Home";
 import { Chat } from "./pages/Chat";
 import { Nav } from "./components/Nav";
+import { CreateProfile } from "./pages/CreateProfile";
 
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 // establish connection to /graphql endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -43,6 +55,12 @@ function App() {
                 path="/register" 
                 element={< Register />}  
               /> 
+
+              <Route
+                path="/createProfile"
+                element={<CreateProfile />}
+              />
+
               <Route 
                 path="/chat" 
                 element={< Chat />}  
