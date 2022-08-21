@@ -5,6 +5,21 @@
   letter-spacing: 0.5px;
   }
 
+:root {
+  --speed: 500ms;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  /* color:  */
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
   display: flex;
