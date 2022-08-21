@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 export const CreateProfile = () => {
 
     return (
-        "Work in progress!"
+        <div className="App">
+            "Work in progress!"
+        </div>
     )
 
 };

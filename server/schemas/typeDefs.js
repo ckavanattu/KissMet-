@@ -7,14 +7,13 @@ type User {
     email: String
     age: Int
     description: String
-    username: String
     
     }
 type Status {
     _id: ID
     statusUpdate: String
     createdAt: String
-    username: String
+    name: String
 }
 
 type Auth {
@@ -25,13 +24,13 @@ type Auth {
     type Query {
         me: User
         users: [User]
-        user(username: String!): User
+        user(name: String!): User
     }
 
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!, description: String!, name: String! age: Int!): Auth
+        addUser(name: String!, email: String!, password: String!, description: String!, age: Int!): Auth
         addStatus(statusUpdate: String!): Status
         addFriend(friendId: ID!): User
     }

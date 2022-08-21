@@ -52,7 +52,7 @@ export const Register = (props) => {
 
     try {
       const { data } = await addUser({
-        variables: { ...formState },
+        variables: { ...formState, age: parseInt(formState.age) },
       });
 
       Auth.login(data.addUser.token);
@@ -79,6 +79,7 @@ export const Register = (props) => {
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
+                {error && <div>Sign up failed</div>}
             </form>
             <Link to="/login"><button className="link-btn"> Already have an account? Login here.</button ></Link>
             </div>

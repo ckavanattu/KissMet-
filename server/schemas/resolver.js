@@ -11,8 +11,8 @@ const resolvers = {
           .populate('friends')
           
       },
-      user: async (parent, { username }) => {
-        return User.findOne({ username })
+      user: async (parent, { name }) => {
+        return User.findOne({ name })
           .select('-__v -password')
           .populate('status')
           .populate('friends')
@@ -56,7 +56,7 @@ const resolvers = {
       },
       addStatus: async (parent, args, context) => {
         if (context.user) {
-          const status = await Status.create({ ...args, username: context.user.username });
+          const status = await Status.create({ ...args, name: context.user.name });
       
           await User.findByIdAndUpdate(
             { _id: context.user._id },
