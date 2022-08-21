@@ -117,16 +117,7 @@ nav{
 
 .matchButtons{
   display: flex;
-}
-
-.userDecline{
-  justify-content: left;
-  width: 13%;
-}
-
-.userMatch{
-  justify-content: right;
-  width: 13%;
+  
 }
 
 .cardImg{

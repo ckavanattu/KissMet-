@@ -1,6 +1,4 @@
 import React from 'react';
-import match from "../../assets/heart.png"
-import decline from "../../assets/cancel.png"
 import { Link } from 'react-router-dom';
 
 
@@ -14,8 +12,7 @@ const Card = (props) => {
                 <p className="userDesc"> {props.desc}</p>
             </div>
             <div className="matchButtons">
-                <img src={decline} className="userDecline"></img>
-                <img src={match} className="userMatch"></img>
+               <button>Add Friend</button>
             </div>
         </div>
     )
