@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav } from "./Nav/index";
+import { Nav } from "../components/Nav/index";
 import { ChatEngine } from 'react-chat-engine';
     
 export const Chat = () => {
