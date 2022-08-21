@@ -1,15 +1,15 @@
 import React from 'react';
-import { Nav } from "./components/Nav/index";
+import { Nav } from "../components/Nav/index.js";
 import Auth from '../utils/auth';
-import Card from './components/Card/index';
+import Card from '../components/Card/index';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
+//import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 
 
 export const Home = () => {
 
-    const { data: userData } = useQuery(QUERY_ME_BASIC);
+    //const { data: userData } = useQuery(QUERY_ME_BASIC);
     const loggedIn = Auth.loggedIn();
 
     return (

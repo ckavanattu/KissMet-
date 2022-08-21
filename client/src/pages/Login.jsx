@@ -22,7 +22,7 @@ export const Login = (props) => {
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <Link to="/home"><button>Log In</button></Link>
+                <Link to="/"><button>Log In</button></Link>
             </form>
             <Link to="/register"><button className="link-btn">Don't have an account? Register here.</button></Link>
             </div>

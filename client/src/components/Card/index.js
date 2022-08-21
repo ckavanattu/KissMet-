@@ -1,6 +1,6 @@
 import React from 'react';
-import match from "../assets/heart.png"
-import decline from "../assets/cancel.png"
+import match from "../../assets/heart.png"
+import decline from "../../assets/cancel.png"
 import { Link } from 'react-router-dom';
 
 
