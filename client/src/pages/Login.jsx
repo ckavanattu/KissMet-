@@ -3,6 +3,7 @@ import Auth from '../utils/auth';
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import axios from 'axios';
 
 
 export const Login = (props) => {
@@ -25,12 +26,23 @@ export const Login = (props) => {
    const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const authObject = { 
+      'Project-ID': '3e4f1c2d-0f41-4952-81aa-67be8f971e30', 
+      'User-Name': formState.email, 
+      'User-Secret': formState.password
+    }
+    
     try {
       const { data } = await login({
         variables: { ...formState },
       });
 
       Auth.login(data.login.token);
+
+      // await axios.get('https://api.chatengine.io/chats', { headers: authObject});
+
+      // window.location.reload();
+
     } catch (e) {
       console.error(e);
     }
