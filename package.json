@@ -23,5 +23,9 @@
   "homepage": "https://github.com/ckavanattu/KissMet-#readme",
   "devDependencies": {
     "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3"
   }
 }
