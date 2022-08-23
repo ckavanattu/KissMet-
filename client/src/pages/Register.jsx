@@ -25,7 +25,7 @@ export const Register = (props) => {
           name: formState.name,
           email: formState.email,
           password: formState.password,
-          age: formState.age,
+          age: parseInt(formState.age),
           description: formState.description
         }
       });
