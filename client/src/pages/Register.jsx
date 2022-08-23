@@ -19,7 +19,17 @@ export const Register = (props) => {
         description: ''
       });
 
-    const [addUser, { error }] = useMutation(ADD_USER);
+
+    const [addUser, { error }] = useMutation(ADD_USER, {
+        variables: {
+          name: formState.name,
+          email: formState.email,
+          password: formState.password,
+          age: formState.age,
+          description: formState.description
+        }
+      });
+    // const [addUser, { error }] = useMutation(ADD_USER);
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -49,11 +59,9 @@ export const Register = (props) => {
   // submit form
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(formState)
     try {
-      const { data } = await addUser({
-        variables: { ...formState, age: parseInt(formState.age) },
-      });
+      const { data } = await addUser();
 
       Auth.login(data.addUser.token);
     } catch (e) {
