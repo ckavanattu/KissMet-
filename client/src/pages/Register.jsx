@@ -10,7 +10,7 @@ export const Register = (props) => {
     // const [name, setName] = useState('');
     // const [age, setAge] = useState('');
     // const [description, setDescription] = useState('');
-
+    const [base64String, setBase64String] = useState('');
     const [formState, setFormState] = useState({
         name: '',
         email: '',
@@ -26,7 +26,9 @@ export const Register = (props) => {
           email: formState.email,
           password: formState.password,
           age: parseInt(formState.age),
-          description: formState.description
+          description: formState.description,
+          imageString: base64String
+
         }
       });
     // const [addUser, { error }] = useMutation(ADD_USER);
@@ -69,6 +71,28 @@ export const Register = (props) => {
     }
   };
 
+
+  function imageUploaded() {
+    var imgString = '';
+    var file = document.querySelector(
+        'input[type=file]')['files'][0];
+  
+    var reader = new FileReader();
+
+      
+    reader.onload = function () {
+        
+        imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
+            .replace(/^.+,/, "");
+        setBase64String(imgString)
+        // console.log(base64String);
+    }
+    reader.readAsDataURL(file);
+
+}
+
+
+
     return (
         <div className = "App">
             <div className="auth-form-container">
@@ -85,6 +109,14 @@ export const Register = (props) => {
                 <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
                 <label htmlFor="description">Describe Yourself!</label>
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
+                
+                    <input type="file" name="" id="fileId" 
+                    onChange={imageUploaded}>      
+                    </input>
+                  
+                    <img src={base64String} alt="string of image" />
+
+              
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
                 {error && <div>Sign up failed</div>}
