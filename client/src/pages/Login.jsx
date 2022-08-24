@@ -66,6 +66,7 @@ export const Login = (props) => {
                 <input value={formState.password} onChange={handleChange} type="password" placeholder="********" id="password" name="password" />
                 {/* <Link to="/"><button>Log In</button></Link> */}
                 <button type="submit">Log In</button>
+                {error && <div>User Not Found</div>}
             </form>
             <Link to="/register"><button className="link-btn" type="submit">Don't have an account? Register here.</button></Link>
             </div>
