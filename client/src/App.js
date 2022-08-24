@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {BrowserRouter as Router, Route,Routes} from "react-router-dom";
+import { createContext } from "react";
 
 import './App.css';
 import { Login } from "./pages/Login";
@@ -12,6 +13,8 @@ import { CreateProfile } from "./pages/CreateProfile";
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+export const ThemeContext = createContext(null);
 
 // establish connection to /graphql endpoint
 const httpLink = createHttpLink({
@@ -34,8 +37,11 @@ const client = new ApolloClient({
 });
 
 
+
 function App() {
   return (
+    <ThemeContext.Provider>
+      <div className="App" id="light">
     <ApolloProvider client={client}>
       <Router>
       <div className="flex-column justify-flex-start min-100-vh">
@@ -75,6 +81,8 @@ function App() {
       </div>
       </Router>
     </ApolloProvider>
+    </div>
+    </ThemeContext.Provider>
   );
 }
 
