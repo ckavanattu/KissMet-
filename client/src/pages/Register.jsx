@@ -13,7 +13,7 @@ export const Register = (props) => {
         email: '',
         password: '',
         age: '',
-        description: '' 
+        description: '' ,
       });
 
 
