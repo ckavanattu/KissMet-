@@ -108,6 +108,14 @@ export const Register = (props) => {
             <div className="auth-form-container">
                 <h2>Register</h2>
             <form className="register-form" onSubmit={handleSubmit}>
+                <div className="profile_image_container">
+                  
+                  <img src={base64String} alt="" />
+
+                  <h4>{formState.name}</h4>
+
+                </div>
+              
                 <label htmlFor="name">Full name</label>
                 {/* <input value={name} onChange={(e) => setName(e.target.value)}type="Name" name="name" id="name" placeholder="Full Name" /> */}
                 <input value={formState.name} onChange={handleChange} type="Name" name="name" id="name" placeholder="Full Name" />
@@ -119,14 +127,7 @@ export const Register = (props) => {
                 <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
                 <label htmlFor="description">Describe Yourself!</label>
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
-                
-                    <input type="file" name="" id="fileId" 
-                    onChange={imageUploaded}>      
-                    </input>
-                  
-                    <img src={base64String} alt="" />
-
-              
+                <input type="file" name="Profile Photo" id="fileId" onChange={imageUploaded}></input>
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
                 {error && <div>Sign up failed</div>}

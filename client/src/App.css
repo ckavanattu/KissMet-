@@ -400,3 +400,28 @@ nav{
   opacity: 1;
   right: 0;
   }
+
+  /* ******************************************** Profile pic************************************ */
+  .profile_image_container{
+    margin-top: 10px ;
+    border-style: solid;
+    border-radius: 1rem;
+    /* padding: 10px; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: large;
+  }
+  
+  .register-form img{
+    /* border-style: solid; */
+
+    border-color: white;
+    border-radius: 5rem;
+    width: 55px;
+    padding: 5px;
+  }
+
+
+
+  /* ******************************************** Profile pic************************************ */
