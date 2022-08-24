@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import axios from 'axios';
 
 export const Register = (props) => {
     // const [email, setEmail] = useState('');
@@ -59,18 +60,52 @@ export const Register = (props) => {
   };
 
   // submit form
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(formState)
+  //   try {
+  //     const { data } = await addUser();
+
+  //     Auth.login(data.addUser.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState)
     try {
       const { data } = await addUser();
-
       Auth.login(data.addUser.token);
+      createChatUser()
     } catch (e) {
       console.error(e);
     }
   };
-
+  function createChatUser(){
+    var chatData = {
+      "username": formState.email,
+      "secret": formState.password,
+      "first_name": formState.name
+    };
+    console.log(chatData)
+    var config = {
+      method: 'post',
+      url: 'https://api.chatengine.io/users/',
+      // headers: {
+      //  'PRIVATE-KEY': '{{private_key}}'
+      // },
+      data : chatData
+    };
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      console.log('Chat New User Creation Success')
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   function imageUploaded() {
     var imgString = '';
@@ -114,7 +149,7 @@ export const Register = (props) => {
                     onChange={imageUploaded}>      
                     </input>
                   
-                    <img src={base64String} alt="string of image" />
+                    <img src={base64String} alt="" />
 
               
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
