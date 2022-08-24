@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import axios from 'axios';
 
 export const Register = (props) => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-    // const [name, setName] = useState('');
-    // const [age, setAge] = useState('');
-    // const [description, setDescription] = useState('');
+
     const [base64String, setBase64String] = useState('');
     const [formState, setFormState] = useState({
         name: '',
@@ -31,24 +28,7 @@ export const Register = (props) => {
 
         }
       });
-    // const [addUser, { error }] = useMutation(ADD_USER);
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-
-    // try {
-    //     const { data } = await addUser({
-    //       variables: { ...formState }
-    //     });
-      
-    //     Auth.login(data.addUser.token);
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-
-    // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -61,16 +41,44 @@ export const Register = (props) => {
   // submit form
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState)
+    // console.log(formState)
     try {
       const { data } = await addUser();
 
       Auth.login(data.addUser.token);
+      createChatUser()
     } catch (e) {
       console.error(e);
     }
   };
+  
+  function createChatUser(){
+    var chatData = {
+      "username": formState.email,
+      "secret": formState.password,
+      "first_name": formState.name
+    };
+    
+    console.log(chatData)
 
+    var config = {
+      method: 'post',
+      url: 'https://api.chatengine.io/users/',
+      headers: {
+       	'PRIVATE-KEY': '1f46d540-e2f1-476f-8801-3194423c77d9'
+       },
+      data : chatData
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      console.log('Chat New User Creation Success')
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   function imageUploaded() {
     var imgString = '';

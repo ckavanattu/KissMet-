@@ -3,12 +3,11 @@ import Auth from '../utils/auth';
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 export const Login = (props) => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
+
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -39,9 +38,9 @@ export const Login = (props) => {
 
       Auth.login(data.login.token);
 
-      // await axios.get('https://api.chatengine.io/chats', { headers: authObject});
-
-      // window.location.reload();
+      await axios.get('https://api.chatengine.io/chats', { headers: authObject});
+      localStorage.setItem('username', formState.email);
+      localStorage.setItem('password', formState.password);
 
     } catch (e) {
       console.error(e);
