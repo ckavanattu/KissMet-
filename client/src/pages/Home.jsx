@@ -48,7 +48,7 @@ export const Home = (props) => {
                     <div className="auth_form_">
                         <img src={user.picture.large} className="cardImg"/>
                         <p className="userNameAge"> {user.name.first}, {user.dob.age}</p>
-                        <p className="userDesc"> Hi I'm {user.name.first} from {user.location.city}, {user.location.state}!</p>
+                        <p className="userDesc"> Hi I'm {user.name.first} from {user.location.city}, {user.location.country}!</p>
                     </div>
                     <div className="matchButtons">
                         <button type = "button" onClick={refreshPage}>Ignore</button>
