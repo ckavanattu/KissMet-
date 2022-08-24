@@ -13,7 +13,7 @@ export const Register = (props) => {
         email: '',
         password: '',
         age: '',
-        description: ''
+        description: '' 
       });
 
 
@@ -24,11 +24,10 @@ export const Register = (props) => {
           password: formState.password,
           age: parseInt(formState.age),
           description: formState.description,
-          imageString: base64String
+          // imageString: base64String
 
         }
       });
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -40,6 +39,9 @@ export const Register = (props) => {
 
   // submit form
   const handleSubmit = async (event) => {
+   formState.image = base64String
+   setFormState(formState)
+   console.log(formState);
     event.preventDefault();
     // console.log(formState)
     try {
@@ -122,7 +124,7 @@ export const Register = (props) => {
                     onChange={imageUploaded}>      
                     </input>
                   
-                    <img src={base64String} alt="string of image" />
+                    <img src={base64String} alt="" />
 
               
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}

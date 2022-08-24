@@ -31,6 +31,9 @@ const userSchema = new Schema(
       minLength: 1,
       maxLength: 280
     },
+    image: {
+      type: String,
+    },
     status: [
       {
         type: Schema.Types.ObjectId,
