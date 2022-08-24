@@ -4,10 +4,12 @@ import {BrowserRouter as Router, Route,Routes} from "react-router-dom";
 import './App.css';
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Home } from "./pages/Home";
+import {Home} from "./pages/Home"
 import { Chat } from "./pages/Chat";
-import { Nav } from "./components/Nav";
+import { Nav } from "./components/Nav/index";
 import { CreateProfile } from "./pages/CreateProfile";
+// import Routes from "./Routes";
+// 
 
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -43,13 +45,13 @@ function App() {
         <div className="container">
             <Routes>
               <Route 
-                path="/" 
-                element={<Home />}  
+                path="/login" 
+                element={<Login />}  
               />
                 
               <Route 
-                path="/login" 
-                element={<Login />}  
+                path="/home" 
+                element={<Home />}  
               />  
               <Route 
                 path="/register" 

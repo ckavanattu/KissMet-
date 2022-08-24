@@ -23,5 +23,7 @@
   "homepage": "https://github.com/ckavanattu/KissMet-#readme",
   "devDependencies": {
     "concurrently": "^7.3.0"
+  },
+  "dependencies": {
   }
 }
