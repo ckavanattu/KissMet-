@@ -138,28 +138,6 @@ export const Register = (props) => {
     )
 
 
-    // var axios = require('axios');
-    // var data = {
-    //   "username": formState.email,
-    //   "secret": formState.password,
-    //   "first_name": formState.name
-    // };
-    
-    // var config = {
-    //   method: 'post',
-    //   url: 'https://api.chatengine.io/users/',
-    //   // headers: {
-    //   // 	'PRIVATE-KEY': '{{private_key}}'
-    //   // },
-    //   data : data
-    // };
-    
-    // axios(config)
-    // .then(function (response) {
-    //   console.log(JSON.stringify(response.data));
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
+
         
 }

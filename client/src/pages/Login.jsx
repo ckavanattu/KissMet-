@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import axios from 'axios';
+import { Home } from "./Home";
 
 
 export const Login = (props) => {
@@ -41,6 +42,7 @@ export const Login = (props) => {
       await axios.get('https://api.chatengine.io/chats', { headers: authObject});
       localStorage.setItem('username', formState.email);
       localStorage.setItem('password', formState.password);
+      <Home/>
 
     } catch (e) {
       console.error(e);

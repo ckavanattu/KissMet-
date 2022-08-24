@@ -16,6 +16,7 @@ export const Nav = () => {
                 <Link to="/chat">
                     <img src={matches} style={{ width: "35%"}}></img>
                 </Link>
+                <img></img>
             </section>
         </nav>
         </header>
