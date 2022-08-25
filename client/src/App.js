@@ -43,12 +43,12 @@ function App() {
         <div className="container">
             <Routes>
               <Route 
-                path="/" 
+                path="/home" 
                 element={<Home />}  
               />
                 
               <Route 
-                path="/login" 
+                path="/" 
                 element={<Login />}  
               />  
               <Route 

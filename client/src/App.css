@@ -72,9 +72,9 @@ button {
   padding-left: var(--spacing-one);
 }
 
-nav{
+/* nav{
   background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
-}
+} */
 
 .navbar {
   position: fixed; 
@@ -117,7 +117,15 @@ nav{
 
 .matchButtons{
   display: flex;
+  justify-content: center;
+  align-items: center;
   
+}
+
+.matchButtons button{
+  margin: 0 2vw;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardImg{
@@ -206,7 +214,7 @@ nav{
   .chat-feed {
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  /* overflow: scroll; */
   /* background-color: rgb(240, 240, 240); */
   background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
   }
