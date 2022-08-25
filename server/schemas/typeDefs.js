@@ -7,7 +7,6 @@ type User {
     email: String
     age: Int
     description: String
-    image: String
     }
 type Status {
     _id: ID
