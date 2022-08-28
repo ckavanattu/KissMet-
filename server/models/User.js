@@ -3,11 +3,16 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
       trim: true
+    },
+    age: {
+      type: Number,
+      required: true,
+      unique: false
     },
     email: {
       type: String,
@@ -20,10 +25,20 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    thoughts: [
+    description: {
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 280
+    },
+    image: {
+      type: String,
+      
+    },
+    status: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
+        ref: 'Status'
       }
     ],
     friends: [
@@ -39,3 +54,20 @@ const userSchema = new Schema(
     }
   }
 );
+
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function(password) {
+  return bcrypt.compare(password, this.password);
+};
+
+const User = model('User', userSchema);
+
+module.exports = User;
