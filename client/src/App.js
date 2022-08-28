@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { createContext } from "react";
 import ReactSwitch from "react-switch";
 
@@ -10,6 +10,7 @@ import { Home } from "./pages/Home";
 import { Chat } from "./pages/Chat";
 import { Nav } from "./components/Nav";
 import { CreateProfile } from "./pages/CreateProfile";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 
 import {
   ApolloProvider,
@@ -42,6 +43,8 @@ const client = new ApolloClient({
 });
 
 function App() {
+  
+
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
@@ -55,15 +58,7 @@ function App() {
           <Router>
             <div className="flex-column justify-flex-start min-100-vh">
               <div className="container">
-                <Routes>
-                  <Route path="/" element={<Login />} />
-
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/chat" element={<Chat />} />
-                  <Route path="*" element={<Home />} />
-                  <Route path="/home" element={<Home />} />
-                </Routes>
+                <AnimatedRoutes />
               </div>
               <div className="switch">
                 <label> {theme === "light" ? "Light Mode" :  "Dark Mode"}</label>

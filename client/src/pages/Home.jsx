@@ -4,16 +4,20 @@ import Auth from '../utils/auth';
 import Card from '../components/Card/index';
 
 import { useQuery } from '@apollo/client';
+import { motion } from "framer-motion";
 //import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 
 
-export const Home = () => {
+const Home = () => {
 
     //const { data: userData } = useQuery(QUERY_ME_BASIC);
     const loggedIn = Auth.loggedIn();
 
     return (
-        <div className="gradient">
+        <motion.div className="gradient"
+            initial={{width: 0}}
+            animate={{width: "100%"}}
+            exit={{x: 0, transition: {duration: 0.4}}}>
             <Nav></Nav>
             <div className="wrapperCard">
                 <Card 
@@ -33,7 +37,8 @@ export const Home = () => {
                 /> */}
             </div>
            
-        </div>
+        </motion.div>
     )
 }
 
+export default Home;

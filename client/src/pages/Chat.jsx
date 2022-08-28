@@ -1,11 +1,15 @@
 import React from "react";
 import { Nav } from "../components/Nav/index";
 import { ChatEngine } from 'react-chat-engine';
-import ChatFeed from '../components/Chat/Chatfeed'
+import ChatFeed from '../components/Chat/Chatfeed';
+import { motion } from "framer-motion";
     
-export const Chat = () => {
+const Chat = () => {
    return (
-      <div >
+      <motion.div 
+            initial={{width: 0}}
+            animate={{width: "100%"}}
+            exit={{x: 0, transition: {duration: 0.4}}}>
           
          <div>
          <ChatEngine
@@ -18,9 +22,11 @@ export const Chat = () => {
          <Nav className="gradient"></Nav>
          </div>
          
-      </div>
+      </motion.div>
       
       
    )
 } 
+
+export default Chat;
     

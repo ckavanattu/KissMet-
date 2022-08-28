@@ -3,10 +3,11 @@ import Auth from '../utils/auth';
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { motion } from "framer-motion";
 // import axios from 'axios';
 
 
-export const Login = (props) => {
+const Login = (props) => {
     // const [email, setEmail] = useState('');
     // const [pass, setPass] = useState('');
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -55,7 +56,11 @@ export const Login = (props) => {
   };
    
     return (
-        <div className = "App">
+        <motion.div className = "App" 
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
             <div className="auth-form-container">
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
@@ -70,9 +75,11 @@ export const Login = (props) => {
             </form>
             <Link to="/register"><button className="link-btn" type="submit">Don't have an account? Register here.</button></Link>
             </div>
-        </div>
+        </motion.div>
         
         // </>
     )
 
 }
+
+export default Login;
