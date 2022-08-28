@@ -6,18 +6,14 @@ import { ADD_USER } from '../utils/mutations';
 import axios from 'axios';
 
 export const Register = (props) => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-    // const [name, setName] = useState('');
-    // const [age, setAge] = useState('');
-    // const [description, setDescription] = useState('');
+
     const [base64String, setBase64String] = useState('');
     const [formState, setFormState] = useState({
         name: '',
         email: '',
         password: '',
         age: '',
-        description: ''
+        description: '' ,
       });
 
 
@@ -28,28 +24,10 @@ export const Register = (props) => {
           password: formState.password,
           age: parseInt(formState.age),
           description: formState.description,
-          imageString: base64String
+          // imageString: base64String
 
         }
       });
-    // const [addUser, { error }] = useMutation(ADD_USER);
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-
-    // try {
-    //     const { data } = await addUser({
-    //       variables: { ...formState }
-    //     });
-      
-    //     Auth.login(data.addUser.token);
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-
-    // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -60,43 +38,40 @@ export const Register = (props) => {
   };
 
   // submit form
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState)
-  //   try {
-  //     const { data } = await addUser();
-
-  //     Auth.login(data.addUser.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
-
   const handleSubmit = async (event) => {
+   formState.image = base64String
+   setFormState(formState)
+   console.log(formState);
     event.preventDefault();
+    // console.log(formState)
     try {
       const { data } = await addUser();
+
       Auth.login(data.addUser.token);
       createChatUser()
     } catch (e) {
       console.error(e);
     }
   };
+  
   function createChatUser(){
     var chatData = {
       "username": formState.email,
       "secret": formState.password,
       "first_name": formState.name
     };
+    
     console.log(chatData)
+
     var config = {
       method: 'post',
       url: 'https://api.chatengine.io/users/',
-      // headers: {
-      //  'PRIVATE-KEY': '{{private_key}}'
-      // },
+      headers: {
+       	'PRIVATE-KEY': '1f46d540-e2f1-476f-8801-3194423c77d9'
+       },
       data : chatData
     };
+    
     axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
@@ -133,6 +108,14 @@ export const Register = (props) => {
             <div className="auth-form-container">
                 <h2>Register</h2>
             <form className="register-form" onSubmit={handleSubmit}>
+                <div className="profile_image_container">
+                  
+                  <img src={base64String} alt="" />
+
+                  <h4>{formState.name}</h4>
+
+                </div>
+              
                 <label htmlFor="name">Full name</label>
                 {/* <input value={name} onChange={(e) => setName(e.target.value)}type="Name" name="name" id="name" placeholder="Full Name" /> */}
                 <input value={formState.name} onChange={handleChange} type="Name" name="name" id="name" placeholder="Full Name" />
@@ -144,14 +127,7 @@ export const Register = (props) => {
                 <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
                 <label htmlFor="description">Describe Yourself!</label>
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
-                
-                    <input type="file" name="" id="fileId" 
-                    onChange={imageUploaded}>      
-                    </input>
-                  
-                    <img src={base64String} alt="" />
-
-              
+                <input type="file" name="Profile Photo" id="fileId" onChange={imageUploaded}></input>
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
                 {error && <div>Sign up failed</div>}
@@ -161,29 +137,5 @@ export const Register = (props) => {
         </div>
     )
 
-
-    // var axios = require('axios');
-    // var data = {
-    //   "username": formState.email,
-    //   "secret": formState.password,
-    //   "first_name": formState.name
-    // };
-    
-    // var config = {
-    //   method: 'post',
-    //   url: 'https://api.chatengine.io/users/',
-    //   // headers: {
-    //   // 	'PRIVATE-KEY': '{{private_key}}'
-    //   // },
-    //   data : data
-    // };
-    
-    // axios(config)
-    // .then(function (response) {
-    //   console.log(JSON.stringify(response.data));
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
         
 }

@@ -78,7 +78,7 @@
 } */
 
 @media screen and (min-width: 600px) {
-  .auth-form-container {
+  #dark .auth-form-container {
     padding: 3.5rem;
     border: 1px solid white;
     border-radius: 10px;
@@ -88,6 +88,18 @@
     margin-bottom: 0rem;
     
   }
+
+  #light .auth-form-container {
+    padding: 3.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: -.15rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0rem;
+    
+  }
+
   .switch {
     display: flex;
     width: 70vw;
