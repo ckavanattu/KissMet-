@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Nav } from "../components/Nav/index.js";
 // import Auth from '../utils/auth';
+import  {Link}  from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
 //import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
@@ -39,8 +40,11 @@ export const Home = (props) => {
     }
 
     return(
-       <div className = "gradient">
-         <Nav></Nav>
+       <>
+        <div className = "gradient">
+         <Nav/>
+            
+        
         {userLoaded ? (
              <div className = "wrapperCard">
                  <div className = "card">
@@ -59,5 +63,9 @@ export const Home = (props) => {
             <p>No User found, please try again</p>
         )}
        </div>
+       <button>
+            <Link to="/login">Log in</Link>
+            </button>
+       </>
     );
 }

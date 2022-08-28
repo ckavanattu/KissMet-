@@ -14,6 +14,7 @@ export const Register = (props) => {
         password: '',
         age: '',
         description: '' ,
+        image:''
       });
 
 
@@ -24,19 +25,59 @@ export const Register = (props) => {
           password: formState.password,
           age: parseInt(formState.age),
           description: formState.description,
+          image: formState.image
+
           // imageString: base64String
 
         }
       });
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    console.log(`name,value ${name} ${value}`)
+    if(name == "image"){
+      console.log(` inside name,value ${name} ${value}`)
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
+        var imgString = '';
+        var file = document.querySelector(
+            'input[type=file]')['files'][0];
+      
+        var reader = new FileReader();
+    
+          
+        reader.onload = function () {
+            
+            imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
+                .replace(/^.+,/, "");
+            setBase64String(imgString)
+            console.log(base64String)
+            value = base64String
+            console.log("helllo",value)
+            
 
+                 
+        // setFormState({
+        //   // ...formState,
+        //   [name]: base64String,
+        // });
+            // console.log(base64String);
+        }
+        reader.readAsDataURL(file);
+        
+        // setFormState({
+        //   ...formState,
+          // [name]: base64String,
+        // });
+        
+      }
+      
+      
+      
+        setFormState({
+          ...formState,
+          [name]: value,
+        });
+    };
+    
   // submit form
   const handleSubmit = async (event) => {
    formState.image = base64String
@@ -82,24 +123,24 @@ export const Register = (props) => {
     });
   }
 
-  function imageUploaded() {
-    var imgString = '';
-    var file = document.querySelector(
-        'input[type=file]')['files'][0];
+//   function imageUploaded() {
+//     var imgString = '';
+//     var file = document.querySelector(
+//         'input[type=file]')['files'][0];
   
-    var reader = new FileReader();
+//     var reader = new FileReader();
 
       
-    reader.onload = function () {
+//     reader.onload = function () {
         
-        imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
-            .replace(/^.+,/, "");
-        setBase64String(imgString)
-        // console.log(base64String);
-    }
-    reader.readAsDataURL(file);
+//         imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
+//             .replace(/^.+,/, "");
+//         setBase64String(imgString)
+//         // console.log(base64String);
+//     }
+//     reader.readAsDataURL(file);
 
-}
+// }
 
 
 
@@ -127,7 +168,7 @@ export const Register = (props) => {
                 <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
                 <label htmlFor="description">Describe Yourself!</label>
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
-                <input type="file" name="Profile Photo" id="fileId" onChange={imageUploaded}></input>
+                <input type="file" name="image" id="fileId" onChange={handleChange}></input>
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
                 {error && <div>Sign up failed</div>}
