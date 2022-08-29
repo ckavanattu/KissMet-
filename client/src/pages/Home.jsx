@@ -65,7 +65,7 @@ export const Home = (props) => {
        </div>
        <button>
             <Link to="/login">Log in</Link>
-            </button>
+        </button>
        </>
     );
 }

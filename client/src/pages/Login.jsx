@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import axios from 'axios';
-
+import logo from "../assets/logo.png";
 
 export const Login = (props) => {
 
@@ -54,7 +54,12 @@ export const Login = (props) => {
   };
    
     return (
-        <div className = "App">
+        
+      
+      
+      
+      <div className = "App">
+          <img src={logo} style={{ width: "15%"}}></img>
             <div className="auth-form-container">
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
