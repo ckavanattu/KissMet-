@@ -1,6 +1,6 @@
-# KissMet-
+## KissMet-
 
-## User Story
+# User Story
 AS a social media user, 
 I WANT to make unlikely friends without judgement
 SO THAT I can build my connections 
@@ -9,7 +9,7 @@ I WANT a chat function SO THAT I can form more meaningful friendships
 
 ![image](https://user-images.githubusercontent.com/100390351/187115770-ad63353b-d157-4ec2-a5c8-734d4178e3e4.png)
 
-## Technologies Used
+# Technologies Used
 <li>
 HTML  
 </li>
@@ -44,12 +44,28 @@ Axios
 Heroku
 </li>
 
+# Installation
+Clone the repository, navigate to the project folder on your CLI and run the following command to install the packages: `npm install`
+then start the server by running `npm run develop`
+
+
 ![image](https://user-images.githubusercontent.com/100390351/187117411-fdafe9f7-34d0-4e56-9750-f2adf647a2a6.png)
 
-## Contribution
+# Contribution
+<li>
 Chacko Kavanattu
+</li>
+<li>
 Hien Phan
+</li>
+<li>
 Anuka Zan
-Sufiyan
+</li>
+<li>
+Sufiyan The Man
+</li>
+<li>
+Theo Phillips
+</li>
 
 
