@@ -53,19 +53,19 @@ then start the server by running `npm run develop`
 
 # Contribution
 <li>
-Chacko Kavanattu
+Chacko Kavanattu-Github: https://github.com/ckavanattu
 </li>
 <li>
-Hien Phan
+Hien Phan-Github: https://github.com/hvphan1993
 </li>
 <li>
-Anuka Zan
+Anuka Zan-Github: https://github.com/AnukaZan
 </li>
 <li>
-Sufiyan The Man
+Sufiyan The Man-Github: https://github.com/Sufiyan11919
 </li>
 <li>
-Theo Phillips
+Theo Phillips-Github: https://github.com/CannibalClarence
 </li>
 
 
