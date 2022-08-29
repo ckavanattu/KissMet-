@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createContext } from "react";
-// import ReactSwitch from "react-switch";
+import ReactSwitch from "react-switch";
 
 import "./App.css";
 import { Login } from "./pages/Login";
@@ -67,7 +67,7 @@ function App() {
               </div>
               <div className="switch">
                 <label> {theme === "light" ? "Light Mode" :  "Dark Mode"}</label>
-                {/* <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} /> */}
+                <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
               </div>
             </div>
           </Router>
