@@ -7,7 +7,6 @@ type User {
     email: String
     age: Int
     description: String
-    image: String
     
     }
 type Status {
@@ -31,7 +30,7 @@ type Auth {
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addUser(name: String!, email: String!, password: String!, description: String!, age: Int!, image:String!): Auth
+        addUser(name: String!, email: String!, password: String!, description: String!, age: Int!,): Auth
         addStatus(statusUpdate: String!): Status
         addFriend(friendId: ID!): User
     }

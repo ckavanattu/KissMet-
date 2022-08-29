@@ -28,12 +28,12 @@ const userSchema = new Schema(
     description: {
       type: String,
       required: true,
-      minLength: 1,
-      maxLength: 280
+      // minLength: 1,
+      // maxLength: 280
     },
     image: {
       type: String,
-      required:true
+      // required:true
       
     },
     status: [

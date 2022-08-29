@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
@@ -18,61 +18,33 @@ export const Register = (props) => {
       });
 
 
+      useEffect(() => {
+       console.log(base64String,"DIidbase64String");
+       setFormState({
+        ...formState,
+        image: base64String,
+      });
+    }, [base64String]);
+
+
     const [addUser, { error }] = useMutation(ADD_USER, {
         variables: {
           name: formState.name,
           email: formState.email,
           password: formState.password,
           age: parseInt(formState.age),
-          description: formState.description,
-          image: formState.image
+          description: formState.image,
+          // image: formState.image
 
           // imageString: base64String
 
         }
       });
+
+  console.log(addUser,"addUser");
   const handleChange = (event) => {
     let { name, value } = event.target;
-    console.log(`name,value ${name} ${value}`)
-    if(name == "image"){
-      console.log(` inside name,value ${name} ${value}`)
-
-        var imgString = '';
-        var file = document.querySelector(
-            'input[type=file]')['files'][0];
-      
-        var reader = new FileReader();
-    
-          
-        reader.onload = function () {
-            
-            imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
-                .replace(/^.+,/, "");
-            setBase64String(imgString)
-            console.log(base64String)
-            value = base64String
-            console.log("helllo",value)
-            
-
-                 
-        // setFormState({
-        //   // ...formState,
-        //   [name]: base64String,
-        // });
-            // console.log(base64String);
-        }
-        reader.readAsDataURL(file);
-        
-        // setFormState({
-        //   ...formState,
-          // [name]: base64String,
-        // });
-        
-      }
-      
-      
-      
-        setFormState({
+          setFormState({
           ...formState,
           [name]: value,
         });
@@ -80,9 +52,9 @@ export const Register = (props) => {
     
   // submit form
   const handleSubmit = async (event) => {
-   formState.image = base64String
-   setFormState(formState)
-   console.log(formState);
+  //  formState.image = base64String
+  //  setFormState(formState)
+  //  console.log(formState);
     event.preventDefault();
     // console.log(formState)
     try {
@@ -123,27 +95,28 @@ export const Register = (props) => {
     });
   }
 
-//   function imageUploaded() {
-//     var imgString = '';
-//     var file = document.querySelector(
-//         'input[type=file]')['files'][0];
+  function imageUploaded() {
+    var imgString = '';
+    var file = document.querySelector(
+        'input[type=file]')['files'][0];
   
-//     var reader = new FileReader();
+    var reader = new FileReader();
 
       
-//     reader.onload = function () {
+    reader.onload = function () {
         
-//         imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
-//             .replace(/^.+,/, "");
-//         setBase64String(imgString)
-//         // console.log(base64String);
-//     }
-//     reader.readAsDataURL(file);
+        imgString = 'data:image/png;base64,' + reader.result.replace("data:", "")
+            .replace(/^.+,/, "");
+        setBase64String(imgString)
+        // console.log(base64String);
+    }
+    reader.readAsDataURL(file);
 
-// }
+}
 
 
 
+    console.log(base64String,"imageString");
     return (
         <div className = "App">
             <div className="auth-form-container">
@@ -165,10 +138,10 @@ export const Register = (props) => {
                 <label htmlFor="email">Email</label>
                 <input value={formState.email} onChange={handleChange} type="Email" placeholder="youremail@gmail.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
-                <input value={formState.password} onChange={handleChange} type="Password" placeholder="********" id="password" name="password" />
+                <input value={formState.password} onChange={handleChange} type="Password" placeholder="****" id="password" name="password" />
                 <label htmlFor="description">Describe Yourself!</label>
                 <input value={formState.description} onChange={handleChange} type="Description" placeholder="List hobbies, interests, etc!" id="description" name="description" />
-                <input type="file" name="image" id="fileId" onChange={handleChange}></input>
+                <input type="file" name="image" id="fileId" onChange={()=>imageUploaded()}></input>
                 {/* <Link to="/createProfile"><button type="submit"> Sign Me Up! </button ></Link> */}
                 <button type="submit"> Sign Me Up! </button >
                 {error && <div>Sign up failed</div>}
